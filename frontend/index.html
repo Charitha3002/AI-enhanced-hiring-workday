@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Enhanced Hiring in WorkDay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Placeholder for icons -->
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h2>HR-AI</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><span><i class="fas fa-chart-line"></i> Dashboard</span></li>
+                <li><span><i class="fas fa-users"></i> Candidates</span></li>
+                <li><span><i class="fas fa-video"></i> Video Interviews</span></li>
+                <li><span><i class="fas fa-code"></i> Tech Vetting</span></li>
+                <li><span><i class="fas fa-cog"></i> Settings</span></li>
+            </ul>
+            <div class="user-profile">
+                <div class="avatar">R</div>
+                <div>
+                    <h4>Recruiter Name</h4>
+                    <p>WorkDay Sync Active</p>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <h1>Candidate Analytics Dashboard</h1>
+                <div class="header-actions">
+                    <button id="uploadResumeBtn" class="primary-btn pulse-glow">Upload Resume (AI Screen)</button>
+                    <div class="notification-icon">🔔<span class="badge">3</span></div>
+                </div>
+            </header>
+
+            <section class="metrics-grid">
+                <div class="metric-card glassmorphism">
+                    <h3>Total Processed</h3>
+                    <div class="value">1,452</div>
+                    <p class="trend positive">↑ 12% this week</p>
+                </div>
+                <div class="metric-card glassmorphism">
+                    <h3>AI Screening Avg</h3>
+                    <div class="value">78%</div>
+                    <p class="trend">Accuracy match</p>
+                </div>
+                <div class="metric-card glassmorphism">
+                    <h3>Fast-Tracked</h3>
+                    <div class="value">45</div>
+                    <p class="trend positive">↑ Sent to WorkDay</p>
+                </div>
+            </section>
+
+            <div class="dashboard-split">
+                <!-- Candidate Rankings -->
+                <section class="candidates-panel glassmorphism">
+                    <div class="panel-header">
+                        <h2>Top Ranked Candidates (AI Analyzed)</h2>
+                        <button class="secondary-btn">View All</button>
+                    </div>
+                    <div class="table-container">
+                        <table id="candidatesTable">
+                            <thead>
+                                <tr>
+                                    <th>Candidate Name</th>
+                                    <th>Role</th>
+                                    <th>AI Match Score</th>
+                                    <th>Status (WorkDay)</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="candidatesList">
+                                <!-- Dynamic Content loaded via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- HR Chatbot Interface -->
+                <section class="chatbot-panel glassmorphism">
+                    <div class="chat-header">
+                        <div class="chat-title">
+                            <span class="bot-status"></span>
+                            <h2>AI Hiring Assistant</h2>
+                        </div>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot">
+                            <div class="msg-bubble">Hello! I'm your AI Hiring Assistant. You can ask me about candidate scores, skills, or statuses.</div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Ask about a candidate...">
+                        <button id="sendChatBtn" class="icon-btn">Send 🚀</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <!-- Modal for Resume Upload Simulation -->
+        <div id="uploadModal" class="modal">
+            <div class="modal-content glassmorphism">
+                <span class="close-btn">&times;</span>
+                <h2>Upload Resume for AI Screening</h2>
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label for="candidateName">Candidate Name</label>
+                        <input type="text" id="candidateName" placeholder="e.g. Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobDesc">Target Job Role</label>
+                        <input type="text" id="jobDesc" placeholder="e.g. Senior Python Developer" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="resumeText">Paste Resume Text</label>
+                        <textarea id="resumeText" rows="6" placeholder="Paste text here to simulate NLP processing..." required></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn full-width">Analyze with AI</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

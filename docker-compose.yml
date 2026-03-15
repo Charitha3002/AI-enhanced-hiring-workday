@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hr_ai_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - WORKDAY_API_KEY=mock-enterprise-key-123
+      - CODE_LLAMA_ENDPOINT=http://mock-llama-service:5000/api/generate
+      - NLP_CONFIDENCE_THRESHOLD=0.85
+    restart: unless-stopped
+    networks:
+      - hr_ai_network
+
+  frontend:
+    image: nginx:alpine
+    container_name: hr_ai_frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - hr_ai_network
+
+networks:
+  hr_ai_network:
+    driver: bridge
